@@ -124,7 +124,7 @@ const initializeDatabase = () => {
       Nombre TEXT NOT NULL,
       Rol TEXT NOT NULL,
       Email TEXT NOT NULL,
-      Pass TEXT NOT NULL,
+      Pw TEXT NOT NULL,
       Fecha_creacion TEXT NOT NULL,
       FOREIGN KEY (Rol) REFERENCES Rol_Usuario(Rol)
     );

@@ -4,7 +4,7 @@ const homeController = require('../controllers/homeController');
 const db = require('../init-db').db;
 
 // Ruta principal para API
-router.get('/', homeController.getHome);
+router.get('/api', homeController.getHome);
 
 router.post('/create', homeController.createItem);
 
@@ -22,12 +22,12 @@ router.get('/usuarios', (req, res) => {
 
   router.post('/usuarios', (req, res) => {
     console.log(req.body); // Esto debe mostrar el cuerpo de la solicitud en la consola
-    const { Nombre, Rol, Email, Pass } = req.body;
+    const { Nombre, Rol, Email, Pw } = req.body;
     const query = `
-      INSERT INTO Usuario (Nombre, Rol, Email, Pass, Fecha_creacion)
+      INSERT INTO Usuario (Nombre, Rol, Email, Pw, Fecha_creacion)
       VALUES (?, ?, ?, ?, datetime('now'));
     `;
-    db.run(query, [Nombre, Rol, Email, Pass], function (err) {
+    db.run(query, [Nombre, Rol, Email, Pw], function (err) {
       if (err) {
         res.status(500).json({ error: err.message });
       } else {
