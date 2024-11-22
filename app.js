@@ -1,6 +1,12 @@
 const express = require('express');
 const app = express();
 const indexRoutes = require('./routes/index');
+const { initializeDatabase } = require('./init-db');
+const cors = require('cors');
+app.use(cors());
+
+
+initializeDatabase();
 
 // Middleware para JSON
 app.use(express.json());
