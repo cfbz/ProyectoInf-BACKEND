@@ -158,13 +158,24 @@ const initializeDatabase = () => {
       Activa INTEGER DEFAULT 1,
       FOREIGN KEY (Herramienta) REFERENCES Herramienta_Integracion(Herramienta)
     );
+
+    CREATE TABLE IF NOT EXISTS alerts (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      timestamp TEXT NOT NULL,
+      signature TEXT NOT NULL,
+      source_ip TEXT NOT NULL,
+      source_port INTEGER,
+      destination_ip TEXT NOT NULL,
+      destination_port INTEGER,
+      protocol TEXT
+    );
   `;
 
   db.exec(sql, (err) => {
     if (err) {
       console.error('Error al inicializar la base de datos:', err.message);
     } else {
-      console.log('Base de datos inicializada exitosamente.');
+      console.log('Base de datos inicializada correctamente.');
     }
   });
 };

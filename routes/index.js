@@ -20,7 +20,7 @@ router.get('/usuarios', (req, res) => {
     });
   });
 
-  router.post('/usuarios', (req, res) => {
+  router.post('/usuario', (req, res) => {
     console.log(req.body); // Esto debe mostrar el cuerpo de la solicitud en la consola
     const { Nombre, Rol, Email, Pw } = req.body;
     const query = `
